@@ -12,7 +12,8 @@ const EditProduct = ({ token }) => {
 
   // State Variables
   const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
+  const [shortDescription, setShortDescription] = useState('')
+  const [fullDescription, setFullDescription] = useState('')
   const [price, setPrice] = useState('')
   const [discountPrice, setDiscountPrice] = useState('')
   const [quantity, setQuantity] = useState(0)
@@ -79,7 +80,10 @@ const EditProduct = ({ token }) => {
         const res = await axios.post(`${backendUrl}/api/product/single`, { productId: id })
         if (res.data.success) {
           const p = res.data.product
-          setName(p.name); setDescription(p.description); setPrice(p.price);
+          setName(p.name);
+          setShortDescription(p.description || '');
+          setFullDescription(p.fullDescription || '');
+          setPrice(p.price);
           setDiscountPrice(p.discountPrice || ''); setCategory(p.category); setType(p.type);
           setTimeout(() => { setSubType(p.subType || '') }, 100);
           setSelectedSizes(p.sizes || []); setBestseller(p.bestseller); setQuantity(p.quantity || 0);
@@ -105,7 +109,9 @@ const EditProduct = ({ token }) => {
     e.preventDefault()
     try {
       const formData = new FormData()
-      formData.append("name", name); formData.append("description", description);
+      formData.append("name", name);
+      formData.append("shortDescription", shortDescription);
+      formData.append("fullDescription", fullDescription);
       formData.append("category", category); formData.append("type", type);
       formData.append("subType", subType); formData.append("price", price);
       formData.append("discountPrice", discountPrice); formData.append("quantity", quantity);
@@ -124,8 +130,8 @@ const EditProduct = ({ token }) => {
   }
 
   return (
-    <div className='p-4 md:p-8 bg-gray-50 min-h-screen'>
-      <form className='max-w-4xl mx-auto flex flex-col gap-6 bg-white p-6 md:p-10 rounded-2xl shadow-sm' onSubmit={handleSubmit}>
+    <div className='px-2 sm:px-4 md:px-8 py-4 md:py-8 bg-gray-50 min-h-screen'>
+      <form className='w-full max-w-3xl lg:max-w-4xl mx-auto flex flex-col gap-5 sm:gap-6 bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-sm' onSubmit={handleSubmit}>
         
         <div className='flex justify-between items-center border-b pb-4'>
             <p className='text-2xl font-bold text-gray-800'>{id ? "Edit Product" : "Add New Product"}</p>
@@ -137,7 +143,7 @@ const EditProduct = ({ token }) => {
           <p className='text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2'>
             <Upload className="w-4 h-4" /> Product Images
           </p>
-          <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
+          <div className='grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4'>
             {[0, 1, 2, 3].map(index => (
               <label key={index} className="relative cursor-pointer group h-32 sm:h-40 bg-gray-50 border-2 border-dashed 
               border-gray-200 rounded-xl overflow-hidden flex items-center justify-center hover:border-[#f16c44] transition-all">
@@ -169,10 +175,17 @@ const EditProduct = ({ token }) => {
             </div>
             
             <div className='md:col-span-2'>
-                <p className='text-sm font-bold text-gray-500 uppercase mb-2'>Description</p>
+                <p className='text-sm font-bold text-gray-500 uppercase mb-2'>Short Description</p>
                 <textarea className='w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 
-                focus:ring-[#f16c44]/20 focus:border-[#f16c44]' rows={4} placeholder="Write detailed description..." value={description} 
-                onChange={e => setDescription(e.target.value)} required />
+                focus:ring-[#f16c44]/20 focus:border-[#f16c44]' rows={3} placeholder="Short summary shown near price..." value={shortDescription} 
+                onChange={e => setShortDescription(e.target.value)} required />
+            </div>
+
+            <div className='md:col-span-2'>
+                <p className='text-sm font-bold text-gray-500 uppercase mb-2'>Full Description (Product Page)</p>
+                <textarea className='w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:ring-2 
+                focus:ring-[#f16c44]/20 focus:border-[#f16c44]' rows={6} placeholder="Full details shown in product description tab..." value={fullDescription} 
+                onChange={e => setFullDescription(e.target.value)} />
             </div>
         </div>
 
