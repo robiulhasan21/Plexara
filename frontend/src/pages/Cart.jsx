@@ -7,7 +7,7 @@ import CartTotal from '../components/CartTotal';
 
 const Cart = () => {
 
-  const { products,currency,cartItems,updateQuantity,navigate,deliveryLocation,setDeliveryLocation,delivery_fee } = useContext(ShopContext);
+  const { products,currency,cartItems,updateQuantity,navigate } = useContext(ShopContext);
   
   const [cartData, setCartData] = useState([]);
 
@@ -74,56 +74,6 @@ const Cart = () => {
       </div>
       <div className='flex justify-end my-20'>
         <div className='w-full sm:w-[450px]'>
-          {/* Delivery Fee Selection */}
-          <div className='mb-6'>
-            <h3 className='text-lg font-semibold mb-3 text-gray-700'>Delivery Location</h3>
-            <div className='flex flex-col gap-3'>
-              <div 
-                onClick={() => setDeliveryLocation('inside')}
-                className={`flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                  deliveryLocation === 'inside' 
-                    ? 'border-[#732581] bg-purple-50' 
-                    : 'border-gray-200 bg-white hover:border-gray-300'
-                }`}
-              >
-                <div className='flex items-center gap-3'>
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                    deliveryLocation === 'inside' ? 'border-[#732581]' : 'border-gray-300'
-                  }`}>
-                    {deliveryLocation === 'inside' && <div className='w-2.5 h-2.5 rounded-full bg-[#732581]'></div>}
-                  </div>
-                  <div>
-                    <p className='text-sm font-medium text-gray-700'>Inside Dhaka</p>
-                   
-                  </div>
-                </div>
-                <span className='text-sm font-semibold text-gray-700'>{currency}80.00</span>
-              </div>
-              
-              <div 
-                onClick={() => setDeliveryLocation('outside')}
-                className={`flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                  deliveryLocation === 'outside' 
-                    ? 'border-[#732581] bg-purple-50' 
-                    : 'border-gray-200 bg-white hover:border-gray-300'
-                }`}
-              >
-                <div className='flex items-center gap-3'>
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                    deliveryLocation === 'outside' ? 'border-[#732581]' : 'border-gray-300'
-                  }`}>
-                    {deliveryLocation === 'outside' && <div className='w-2.5 h-2.5 rounded-full bg-[#732581]'></div>}
-                  </div>
-                  <div>
-                    <p className='text-sm font-medium text-gray-700'>Outside Dhaka</p>
-                    
-                  </div>
-                </div>
-                <span className='text-sm font-semibold text-gray-700'>{currency}130.00</span>
-              </div>
-            </div>
-          </div>
-          
           <CartTotal />
           <div className='w-full text-end'>
             <button onClick={()=>navigate('/place-order')} className='bg-gradient-to-r from-[#732581] via-[#f16c44] to-[#faad3a]

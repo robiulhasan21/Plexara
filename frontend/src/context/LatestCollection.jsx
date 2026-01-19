@@ -18,7 +18,7 @@ const LatestCollection = () => {
     <div className='my-10'>
         <div className='py-8 text-center'>
             {/* Start of the new change to match the image */}
-            <div className='w-3/4 py-2 mx-auto rounded-s-sm bg-gradient-to-r from-[#732581] via-[#f16c44] 
+            <div className='w-1/1 py-1 mx-auto rounded-md bg-gradient-to-r from-[#732581] via-[#f16c44] 
             to-[#faad3a] md:w-1/2 lg:w-1/4'>
                 <Title text1={'LATEST'} text2={'COLLECTION'} customTextColor={'text-white'} /> 
             </div>

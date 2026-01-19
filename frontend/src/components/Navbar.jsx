@@ -173,7 +173,7 @@ const toggleMenSub = (sub) => toggleMobileSub(sub);
             <HiOutlinePhone className="text-[#E55225] shrink-0" size={20} />
             <div className="flex flex-col">
               <span className="text-[#E55225] text-[7px] md:text-[10px] font-bold tracking-widest uppercase leading-none">Call Us</span>
-              <span className="text-gray-800 font-bold text-[11px] md:text-sm leading-tight">+880 1604-643731</span>
+              <span className="text-gray-800 font-bold text-[9px] md:text-sm leading-tight">+880 1604-643731</span>
             </div>
           </div>
           
@@ -184,9 +184,9 @@ const toggleMenSub = (sub) => toggleMobileSub(sub);
               placeholder="Search products..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full py-1 px-3 pl-8 text-[11px] md:text-[12px] focus:outline-none focus:border-[#E55225] transition-all"
+              className="w-full py-2 px-2 pl-8 text-base md:text-sm focus:outline-none focus:border-[#E55225] transition-all"
             />
-            <FaSearch className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400" size={12} />
+            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={14} />
           </form>
         </div>
 

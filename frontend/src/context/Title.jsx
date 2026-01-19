@@ -5,7 +5,7 @@ const Title = ({ text1, text2, customTextColor }) => {
   const textColor = customTextColor || 'text-black'; // Default to black if not provided
   
   return (
-    <h2 className={`text-3xl ${textColor}`}>
+    <h2 className={`text-2xl ${textColor}`}>
       {text1} <span className="font-light">{text2}</span>
     </h2>
   );

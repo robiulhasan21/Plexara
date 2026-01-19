@@ -78,10 +78,14 @@ const Hero = () => {
           <FaChevronRight size={20} />
         </button>
 
-        <div className="absolute z-10 top-10 left-10"> 
+        <div className="absolute z-10 top-5 left-5"> 
           <Link to="/watch">
-            <button className="px-5 py-2 text-[14px] font-bold text-white bg-gradient-to-r from-[#732581] via-[#f16c44] to-[#faad3a]
-               rounded-sm hover:opacity-90 transition uppercase shadow-md">
+            <button className="px-2 py-2 font-semibold text-white
+           rounded-md border border-white/40
+           bg-transparent
+           transition-all duration-300
+           hover:shadow-lg hover:shadow-[#f16c44]/30
+           hover:scale-110 active:scale-95">
                SHOP NOW
             </button>
           </Link>

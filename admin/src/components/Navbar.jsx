@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 
 const Navbar = ({ setToken }) => {
   return (
-    <div className='flex items-center py-4 px-[5%] justify-between bg-white border-b shadow-sm fixed top-0 left-0 right-0 z-50'>
+    <div className='flex items-center py-4 px-[5%] justify-between bg-white border-b shadow-sm sticky top-0 z-50'>
       
       {/* Left Side: Logo and Branding */}
       <div className='flex flex-col'>

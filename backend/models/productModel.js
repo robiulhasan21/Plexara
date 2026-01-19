@@ -2,10 +2,8 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  // Short description for listings / top of product page
-  description: { type: String, required: true },
-  // Full description for detailed tab on product page
-  fullDescription: { type: String, default: "" },
+  description: { type: String, required: true }, // Short description
+  fullDescription: { type: String, default: "" }, // Full description for product page
   price: { type: Number, required: true },
   discountPrice: { type: Number, default: 0 },
   images: { type: Array, required: true },

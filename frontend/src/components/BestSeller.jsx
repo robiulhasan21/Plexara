@@ -19,7 +19,7 @@ const BestSeller = ()=>{
 
         {/* START: BEST SELLERS box */}
         <div className='justify-center flex-grow'>
-        <div className='w-3/4 py-2 mx-auto rounded-s-sm bg-gradient-to-r from-[#732581] via-[#f16c44] 
+        <div className='w-1/1 py-1 mx-auto rounded-md bg-gradient-to-r from-[#732581] via-[#f16c44] 
             to-[#faad3a] md:w-1/2 lg:w-1/4'>
           <Title text1={'BEST'} text2={'SELLERS'} customTextColor={'text-white'} />
         </div>

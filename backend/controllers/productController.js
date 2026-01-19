@@ -4,21 +4,16 @@ import productModel from "../models/productModel.js";
 // Add product (existing)
 const addProduct = async (req, res) => {
   try {
-    const {
-      name,
-      // keep backwards-compat: allow either `description` or new short/full fields
-      description,
-      shortDescription,
-      fullDescription,
-      price,
-      category,
-      type,
-      subType,
-      sizes,
-      bestseller,
-      quantity,
-      discountPrice,
-    } = req.body;
+    const { name, description, shortDescription, fullDescription, price, category, type, subType, sizes, bestseller, quantity, discountPrice } = req.body;
+
+    // Validate required fields early (helps admin UX)
+    if (!subType) {
+      return res.json({ success: false, message: "subType is required" });
+    }
+    
+    // Use shortDescription if provided, otherwise fallback to description
+    const finalShortDescription = shortDescription || description || "";
+    const finalFullDescription = fullDescription || description || "";
 
     const image1 = req.files.image1 && req.files.image1[0];
     const image2 = req.files.image2 && req.files.image2[0];
@@ -34,12 +29,6 @@ const addProduct = async (req, res) => {
       })
     );
 
-    // Decide what to store
-    const finalShortDescription =
-      shortDescription || description || "";
-    const finalFullDescription =
-      fullDescription || description || "";
-
     const productData = {
       name,
       description: finalShortDescription,
@@ -48,6 +37,7 @@ const addProduct = async (req, res) => {
       price: Number(price),
       discountPrice: Number(discountPrice) || 0,
       type,
+      subType,
       bestseller: bestseller === "true",
       sizes: JSON.parse(sizes),
       quantity: Number(quantity) || 0,
@@ -68,33 +58,19 @@ const addProduct = async (req, res) => {
 // Update product (New)
 const updateProduct = async (req, res) => {
   try {
-    const {
-      id,
-      name,
-      description,
-      shortDescription,
-      fullDescription,
-      price,
-      category,
-      type,
-      subType,
-      sizes,
-      bestseller,
-      quantity,
-      discountPrice,
-    } = req.body;
+    const { id, name, description, shortDescription, fullDescription, price, category, type, subType, sizes, bestseller, quantity, discountPrice } = req.body;
 
     const product = await productModel.findById(id);
     if(!product) return res.json({ success: false, message: "Product not found" });
 
     // Update basic fields
     product.name = name;
-    // keep existing data shape: `description` is short description
+    // Use shortDescription if provided, otherwise fallback to description
     product.description = shortDescription || description || product.description;
     if (typeof fullDescription === "string") {
       product.fullDescription = fullDescription;
     } else if (!product.fullDescription && description) {
-      // fallback to old single description if present
+      // Fallback to old single description if fullDescription not set
       product.fullDescription = description;
     }
     product.price = Number(price);

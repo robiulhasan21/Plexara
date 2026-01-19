@@ -10,7 +10,7 @@ const ShopContextProvider = (props) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
     const currency = ' ৳ ';
     const [deliveryLocation, setDeliveryLocation] = useState(localStorage.getItem('deliveryLocation') || 'inside');
-    const delivery_fee = deliveryLocation === 'inside' ? 80 : 130;
+    const delivery_fee = deliveryLocation === 'inside' ? 130 : 200;
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false)
     const [cartItems, setCartItems] = useState({});
@@ -50,11 +50,6 @@ const ShopContextProvider = (props) => {
             localStorage.removeItem('token');
         }
     }, [token]);
-
-    // Sync delivery location with localStorage
-    useEffect(() => {
-        localStorage.setItem('deliveryLocation', deliveryLocation);
-    }, [deliveryLocation]);
 
     const addToCart = async (itemId,size) => {
 
@@ -129,8 +124,7 @@ const ShopContextProvider = (props) => {
         products, currency, delivery_fee, backendUrl,
         search,setSearch,showSearch,setShowSearch,
         cartItems, setCartItems, addToCart, getCartCount,
-        updateQuantity,getCartAmount,navigate,setToken,token,
-        deliveryLocation, setDeliveryLocation
+        updateQuantity,getCartAmount,navigate,setToken,token
 
     }
   return (
