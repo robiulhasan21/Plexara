@@ -104,14 +104,14 @@ const Hero = () => {
       </div>
 
       {/* --- SUBHERO SECTION --- */}
-      <div className="w-full px-0 md:px-2 py-10 bg-white"> 
+      <div className="w-full px-2 sm:px-3 md:px-2 py-6 sm:py-10 bg-white"> 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-          {/* Subhero columns remain same as your code */}
-          <div className="relative group overflow-hidden h-[400px] md:h-[550px]">
+          {/* Left banner */}
+          <div className="relative group overflow-hidden h-[260px] sm:h-[340px] md:h-[550px]">
             <img src={subheroImages.subhero_img1} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Sunglasses" />
-            <div className="absolute inset-0 bg-black/10 flex flex-col justify-end p-8">
+            <div className="absolute inset-0 bg-black/10 flex flex-col justify-end p-5 sm:p-8">
               
-              <h3 className="text-white text-3xl uppercase mb-4 leading-tight">Watch Collection</h3>
+              <h3 className="text-white text-2xl sm:text-3xl uppercase mb-3 sm:mb-4 leading-tight">Watch Collection</h3>
               <Link to="/watch">
                 <button className="border-2 border-white text-white px-6 py-2 text-xs font-bold hover:bg-white hover:text-black transition uppercase w-fit">
                   Shop Now
@@ -120,12 +120,13 @@ const Hero = () => {
             </div>
           </div>
 
+          {/* Middle stack */}
           <div className="flex flex-col gap-2 md:gap-4">
-            <div className="relative group overflow-hidden h-[265px] md:h-[267px] bg-[#f9e15e]">
+            <div className="relative group overflow-hidden h-[200px] sm:h-[240px] md:h-[267px] bg-[#f9e15e]">
               <img src={subheroImages.subhero_img2} className="w-full h-full object-cover mix-blend-multiply transition-transform duration-700 group-hover:scale-105" alt="Sneaker" />
-              <div className="absolute inset-0 flex flex-col justify-center p-8">
+              <div className="absolute inset-0 flex flex-col justify-center p-5 sm:p-8">
                 
-                <h3 className="text-white text-2xl font-black uppercase mb-4">Women's Collection</h3>
+                <h3 className="text-white text-xl sm:text-2xl font-black uppercase mb-3 sm:mb-4">Women's Collection</h3>
                 <Link to="/women">
                   <button className="border-2 border-white text-white px-6 py-2 text-xs font-bold hover:bg-white hover:text-black transition uppercase w-fit">
                     Shop Now
@@ -133,11 +134,11 @@ const Hero = () => {
                 </Link>
               </div>
             </div>
-            <div className="relative group overflow-hidden h-[265px] md:h-[267px] bg-black">
+            <div className="relative group overflow-hidden h-[200px] sm:h-[240px] md:h-[267px] bg-black">
               <img src={subheroImages.subhero_img4} className="w-full h-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105" alt="Shoes" />
-              <div className="absolute inset-0 flex flex-col justify-center p-8">
+              <div className="absolute inset-0 flex flex-col justify-center p-5 sm:p-8">
                 
-                <h3 className="text-white text-3xl uppercase mb-4">Kid's Collection</h3>
+                <h3 className="text-white text-2xl sm:text-3xl uppercase mb-3 sm:mb-4">Kid's Collection</h3>
                 <Link to="/kids">
                   <button className="border-2 border-white text-white px-6 py-2 text-xs font-bold hover:bg-white hover:text-black transition uppercase w-fit">
                     Shop Now
@@ -147,11 +148,12 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="relative group overflow-hidden h-[400px] md:h-[550px]">
+          {/* Right banner */}
+          <div className="relative group overflow-hidden h-[260px] sm:h-[340px] md:h-[550px]">
             <img src={subheroImages.subhero_img3} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="T-Shirt" />
-            <div className="absolute inset-0 bg-black/20 flex flex-col justify-start p-8 pt-16 text-white">
+            <div className="absolute inset-0 bg-black/20 flex flex-col justify-start p-5 sm:p-8 pt-10 sm:pt-16 text-white">
               
-              <h3 className="text-3xl uppercase mb-4 leading-tight">Men's Collection</h3>
+              <h3 className="text-2xl sm:text-3xl uppercase mb-3 sm:mb-4 leading-tight">Men's Collection</h3>
               <Link to="/men">
                 <button className="border-2 border-white text-white px-6 py-2 text-xs font-bold hover:bg-white hover:text-black transition uppercase w-fit">
                   Shop Now

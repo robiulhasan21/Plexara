@@ -193,7 +193,7 @@ const HeroImages = ({ token }) => {
   )
 
   return (
-    <div className='w-full max-w-6xl mx-auto px-2 md:px-6 pb-20'>
+    <div className='w-full max-w-6xl mx-auto px-2 sm:px-3 md:px-6 pb-28 md:pb-20'>
       <h1 className='text-xl md:text-3xl font-extrabold my-6 text-gray-800 border-l-4 border-orange-500 pl-4'>
         Hero Settings
       </h1>

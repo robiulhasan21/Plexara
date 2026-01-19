@@ -130,8 +130,8 @@ const Add = ({ token }) => {
   }
 
   return (
-    <div className='p-4 md:p-8 bg-gray-50 min-h-screen'>
-      <form className='max-w-4xl mx-auto flex flex-col gap-6 bg-white p-6 md:p-10 rounded-2xl shadow-sm' onSubmit={handleSubmit}>
+    <div className='px-2 sm:px-4 md:px-8 py-4 md:py-8 pb-28 md:pb-8 bg-gray-50 min-h-screen'>
+      <form className='w-full max-w-3xl lg:max-w-4xl mx-auto flex flex-col gap-5 sm:gap-6 bg-white p-4 sm:p-6 md:p-10 rounded-2xl shadow-sm' onSubmit={handleSubmit}>
         
         <div className='flex justify-between items-center border-b pb-4'>
             <p className='text-2xl font-bold text-gray-800'>{id ? "Edit Product" : "Add New Product"}</p>

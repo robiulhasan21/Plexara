@@ -56,7 +56,7 @@ const Orders = ({ token }) => {
   }
 
   return (
-    <div className="p-2 md:p-6 bg-gray-50 min-h-screen">
+    <div className="p-2 md:p-6 pb-28 md:pb-6 bg-gray-50 min-h-screen">
       <p className='mb-6 text-2xl font-bold text-gray-800 flex items-center gap-2'>
         <Package className="w-6 h-6" /> All Orders
       </p>
