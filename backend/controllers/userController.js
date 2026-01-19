@@ -96,8 +96,28 @@ const adminLogin = async (req, res) => {
 
         const {email,password} = req.body
 
-        if(email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD){
-            const token = jwt.sign(email+password,process.env.JWT_SECRET);
+        // Trim whitespace from input
+        const trimmedEmail = email?.trim();
+        const trimmedPassword = password?.trim();
+
+        // Get env variables (trimmed)
+        const adminEmail = process.env.ADMIN_EMAIL?.trim();
+        const adminPassword = process.env.ADMIN_PASSWORD?.trim();
+
+        // Debug logging (remove in production)
+        console.log('Admin login attempt:', { 
+            providedEmail: trimmedEmail, 
+            providedPassword: '***',
+            expectedEmail: adminEmail,
+            matchEmail: trimmedEmail === adminEmail,
+            matchPassword: trimmedPassword === adminPassword
+        });
+
+        if(trimmedEmail === adminEmail && trimmedPassword === adminPassword){
+            if (!process.env.JWT_SECRET) {
+                return res.json({success:false,message:"Server configuration error: JWT_SECRET not set"})
+            }
+            const token = jwt.sign(trimmedEmail+trimmedPassword,process.env.JWT_SECRET);
             res.json({success:true,token})
         } else {
             res.json({success:false,message:"Invalid credentials"})
