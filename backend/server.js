@@ -50,7 +50,11 @@ app.get('/', (req, res) => {
   res.send("API Working 🚀")
 })
 
-// Server Listen (Render compatible)
-app.listen(PORT, () => {
-  console.log(`Server running on PORT : ${PORT}`)
-})
+// Only start listening when not running on Vercel serverless
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server running on PORT : ${PORT}`)
+  })
+}
+
+export default app;
