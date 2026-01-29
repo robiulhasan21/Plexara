@@ -6,16 +6,17 @@
             "use": "@vercel/node",
             "config": {
                 "includeFiles": [
-                    "uploads/**",
-                    "config/**"
+                    "config/**",
+                    "routes/**",
+                    "uploads/**"
                 ]
             }
         }
     ],
-    "routes": [
+    "rewrites": [
         {
-            "src": "(.*)",
-            "dest": "server.js"
+            "source": "/(.*)",
+            "destination": "/server.js"
         }
     ]
 }
