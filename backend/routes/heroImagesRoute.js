@@ -1,5 +1,5 @@
 import express from 'express';
-import { getHeroImages, addHeroImages, deleteHeroImage, reorderHeroImages } from '../controllers/heroImagesController.js';
+import { getHeroImages, addHeroImages, deleteHeroImage, reorderHeroImages, deleteSubheroImage, deleteHeroVideo } from '../controllers/heroImagesController.js';
 import upload from '../middleware/multer.js';
 import adminAuth from '../middleware/adminAuth.js';
 
@@ -20,10 +20,10 @@ heroImagesRouter.post(
 heroImagesRouter.post('/delete', adminAuth, deleteHeroImage);
 
 // Delete individual subhero image field
-heroImagesRouter.post('/delete-subhero', adminAuth, (req, res) => deleteSubheroImage(req, res));
+heroImagesRouter.post('/delete-subhero', adminAuth, deleteSubheroImage);
 
 // Delete individual hero video field
-heroImagesRouter.post('/delete-video', adminAuth, (req, res) => deleteHeroVideo(req, res));
+heroImagesRouter.post('/delete-video', adminAuth, deleteHeroVideo);
 
 // Reorder hero images (admin only)
 heroImagesRouter.post('/reorder', adminAuth, reorderHeroImages);
